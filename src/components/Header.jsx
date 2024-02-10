@@ -1,24 +1,32 @@
-import { Image, Text, View, StyleSheet } from "react-native";
-import cartLogo from "../../assets/cart.png";
+import { Text, View, StyleSheet } from "react-native";
+import { colors } from "../global/colors";
+import { AntDesign } from '@expo/vector-icons';
 
-export const Header = () => {
+function Header() {
   return (
-    <View style={styles.header}>
-      <Text>CARRITO</Text>
-      <Image style={styles.image} source={cartLogo} />
+    <View style={styles.container}>
+      <Text style={styles.text}>Outlet Mike</Text>
+      <AntDesign name="shoppingcart" size={28} color="black" />
     </View>
   );
-};
+}
+
+export default Header;
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    gap: 8,
+  container: {
+    height: "8%",
+    width: "100%",
+    backgroundColor: colors.burnt_sienna,
     alignItems: "center",
-    justifyContent: "center",
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
-  image: {
-    width: 50,
-    height: 50,
+  text: {
+    textAlign: "center",
+    color: "white",
+    fontSize: 23,
+    fontFamily: "MuktaBold",
+    marginHorizontal: "30%"
   },
 });
