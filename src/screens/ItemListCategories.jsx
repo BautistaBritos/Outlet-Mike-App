@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { View, FlatList, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet} from "react-native";
 import allProducts from "../data/products.json";
 import ProductItem from "../components/ProductItem";
+import { colors } from "../global/colors";
 import Search from "../components/Search";
 
-function ItemListCategories({ category }) {
+function ItemListCategories({ navigation, route }) {
   const [products, setProducts] = useState([]);
   const [keyword, setKeyword] = useState("");
+
+  const { category } = route.params;
 
   useEffect(() => {
     if (category) {
@@ -28,7 +31,7 @@ function ItemListCategories({ category }) {
       <Search onSearch={setKeyword} />
       <FlatList
         data={products}
-        renderItem={({ item }) => <ProductItem product={item} />}
+        renderItem={({ item }) => <ProductItem product={item} navigation={navigation}/>}
         keyExtractor={(item) => item.id}
         style={{marginTop: "5%"}}
       />
@@ -44,5 +47,6 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: colors.seashell
   },
 });

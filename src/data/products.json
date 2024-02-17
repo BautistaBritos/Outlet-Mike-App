@@ -3,8 +3,8 @@
       "id": 1,
       "title": "Air Force 1",
       "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "stock": 94,
+      "price": 10000,
+      "stock": 10,
       "category": "Nike",
       "images": [
         "https://www.moov.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dwe545a199/products/NI_CK7648-100/NI_CK7648-100-1.JPG"
@@ -14,8 +14,8 @@
         "id": 2,
         "title": "Forum Low",
         "description": "An apple mobile which is nothing like apple",
-        "price": 549,
-        "stock": 94,
+        "price": 15000,
+        "stock": 43,
         "category": "Adidas",
         "images": [
           "https://essential.vtexassets.com/arquivos/ids/875405-800-auto?v=638235121112130000&width=800&height=auto&aspect=true"
@@ -25,8 +25,8 @@
         "id": 3,
         "title": "Caven",
         "description": "An apple mobile which is nothing like apple",
-        "price": 549,
-        "stock": 94,
+        "price": 20000,
+        "stock": 66,
         "category": "Puma",
         "images": [
           "https://media2.solodeportes.com.ar/media/catalog/product/cache/7c4f9b393f0b8cb75f2b74fe5e9e52aa/z/a/zapatillas-puma-caven-blanca-640010386489001-1.jpg"
@@ -36,7 +36,7 @@
         "id": 4,
         "title": "Dunk Low",
         "description": "An apple mobile which is nothing like apple",
-        "price": 549,
+        "price": 18000,
         "stock": 94,
         "category": "Nike",
         "images": [
@@ -47,8 +47,8 @@
           "id": 5,
           "title": "Grand Court",
           "description": "An apple mobile which is nothing like apple",
-          "price": 549,
-          "stock": 94,
+          "price": 100000,
+          "stock": 9,
           "category": "Adidas",
           "images": [
             "https://celadasa.vtexassets.com/arquivos/ids/238203-800-auto?v=638291046738170000&width=800&height=auto&aspect=true"
@@ -58,11 +58,109 @@
           "id": 6,
           "title": "BMW M",
           "description": "An apple mobile which is nothing like apple",
-          "price": 549,
-          "stock": 94,
+          "price": 30000,
+          "stock": 15,
           "category": "Puma",
           "images": [
             "https://media2.solodeportes.com.ar/media/catalog/product/cache/7c4f9b393f0b8cb75f2b74fe5e9e52aa/z/a/zapatillas-puma-bmw-m-motorsport-x-ray-speed-blanca-1480938-640010307591004-1.jpg"
+          ]
+        },
+        {
+          "id": 7,
+          "title": "Carina 2.0",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 150000,
+          "stock": 90,
+          "category": "Puma",
+          "images": [
+            "https://www.dexter.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dwc2b36625/products/PU_388937-04/PU_388937-04-1.JPG"
+          ]
+        },
+        {
+          "id": 8,
+          "title": "Suede Classic XXI",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 15000,
+          "stock": 5,
+          "category": "Puma",
+          "images": [
+            "https://www.tripstore.com.ar/media/catalog/product/cache/4769e4d9f3516e60f2b4303f8e5014a8/3/8/38898101_0.jpg"
+          ]
+        },
+        {
+          "id": 9,
+          "title": "Duramo 10",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 1500,
+          "stock": 50,
+          "category": "Adidas",
+          "images": [
+            "https://essential.vtexassets.com/arquivos/ids/875930-800-auto?v=638235125353270000&width=800&height=auto&aspect=true"
+          ]
+        },
+        {
+          "id": 10,
+          "title": "Ultraboost 22",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 16000,
+          "stock": 10,
+          "category": "Adidas",
+          "images": [
+            "https://sportotalar.vtexassets.com/arquivos/ids/442544-800-450?v=638255697044030000&width=800&height=450&aspect=true"
+          ]
+        },
+        {
+          "id": 11,
+          "title": "Air Max Down",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 160000,
+          "stock": 12,
+          "category": "Nike",
+          "images": [
+            "https://nikearprod.vtexassets.com/arquivos/ids/702815/DR2395_100_A_PREM.jpg?v=638233933595330000"
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Air Max 97 SE",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 70000,
+          "stock": 18,
+          "category": "Nike",
+          "images": [
+            "https://nikearprod.vtexassets.com/arquivos/ids/455649-800-800?width=800&height=800&aspect=true"
+          ]
+        },
+        {
+          "id": 13,
+          "title": "Air Force 1 LE",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 74000,
+          "stock": 13,
+          "category": "Nike",
+          "images": [
+            "https://nikearprod.vtexassets.com/arquivos/ids/699311/DH2920_001_A_PREM.jpg?v=638229667061330000"
+          ]
+        },
+        {
+          "id": 14,
+          "title": "Court Plataforma",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 74000,
+          "stock": 152,
+          "category": "Adidas",
+          "images": [
+            "https://assets.adidas.com/images/w_600,f_auto,q_auto/bdb0d6c7e0e24418b4de0083996df166_9366/Zapatillas_adidas_Court_Plataforma_Gris_ID1970_01_standard.jpg"
+          ]
+        },{
+          "id": 15,
+          "title": "Cali Court",
+          "description": "An apple mobile which is nothing like apple",
+          "price": 73500,
+          "stock": 2,
+          "category": "Puma",
+          "images": [
+            "https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_706,h_706/global/396019/01/sv01/fnd/ARG/fmt/png"
           ]
         }
 ]
