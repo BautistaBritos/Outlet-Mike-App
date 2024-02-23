@@ -1,12 +1,10 @@
 import { Text, View, StyleSheet } from "react-native";
 import { colors } from "../global/colors";
-import { AntDesign } from '@expo/vector-icons';
 
 function Header({title}) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{title}</Text>
-      <AntDesign name="shoppingcart" size={28} color="black" />
     </View>
   );
 }
@@ -20,7 +18,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-around",
-    height: 60
+    height: 60,
   },
   text: {
     textAlign: "center",

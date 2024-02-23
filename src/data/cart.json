@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "title": "Air Force 1",
+      "description": "An apple mobile which is nothing like apple",
+      "price": 10000,
+      "stock": 10,
+      "category": "Nike",
+      "images": [
+        "https://www.moov.com.ar/on/demandware.static/-/Sites-365-dabra-catalog/default/dwe545a199/products/NI_CK7648-100/NI_CK7648-100-1.JPG"
+      ],
+      "quantity": 2
+    },
+    {
+        "id": 2,
+        "title": "Forum Low",
+        "description": "An apple mobile which is nothing like apple",
+        "price": 15000,
+        "stock": 43,
+        "category": "Adidas",
+        "images": [
+          "https://essential.vtexassets.com/arquivos/ids/875405-800-auto?v=638235121112130000&width=800&height=auto&aspect=true"
+        ],
+        "quantity": 3
+      },
+      {
+        "id": 3,
+        "title": "Caven",
+        "description": "An apple mobile which is nothing like apple",
+        "price": 20000,
+        "stock": 66,
+        "category": "Puma",
+        "images": [
+          "https://media2.solodeportes.com.ar/media/catalog/product/cache/7c4f9b393f0b8cb75f2b74fe5e9e52aa/z/a/zapatillas-puma-caven-blanca-640010386489001-1.jpg"
+        ],
+        "quantity": 1
+      }
+]      
