@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { colors } from "../global/colors";
+import { useGetOrdersQuery } from "../services/shopService";
 
 const OrderItem = ({ item }) => {
   const total = item.items.reduce(

@@ -1,11 +1,19 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import orders from "../data/orders.json";
 import OrderItem from "../components/OrderItem";
+import { useGetOrdersQuery } from "../services/shopService";
+import { useEffect } from "react";
 
 const Orders = () => {
+  const { data, isLoading, error } = useGetOrdersQuery();
+
+  useEffect(() => {
+    console.log(data);
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Tus Compras</Text>
+      <Text style={styles.text}>title</Text>
       <FlatList
         data={orders}
         renderItem={({ item }) => <OrderItem item={item} />}
@@ -26,6 +34,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     marginBottom: "7%",
-    textDecorationLine: "underline"
-  }
+    textDecorationLine: "underline",
+    color: "black"
+  },
 });

@@ -4,18 +4,27 @@ import ProductItem from "../components/ProductItem";
 import { colors } from "../global/colors";
 import Search from "../components/Search";
 import { useSelector } from "react-redux";
+import { useGetProductsByCategoryQuery } from "../services/shopService";
 
-function ItemListCategories({ navigation, route }) {
+function ItemListCategories({ navigation, }) {
   const [products, setProducts] = useState([]);
   const [keyword, setKeyword] = useState("");
-  const productsFilteredByCategory = useSelector(
-    (state) => state.shopReducer.value.productsFilteredByCategory
-  );
+  //const productsFilteredByCategory = useSelector(
+    //(state) => state.shopReducer.value.productsFilteredByCategory
+  //);
+
+  const category = useSelector((state)=> state.shopReducer.value.categorySelected);
+  const { data: productsFilteredByCategory, isLoading, error} = useGetProductsByCategoryQuery(category)
 
   useEffect(() => {
-    const productsFiltered = productsFilteredByCategory.filter((product)=> product.title.includes(keyword))
-    setProducts(productsFiltered)
-  }, [productsFilteredByCategory, keyword]);
+    if (productsFilteredByCategory) {
+        const productsRaw = Object.values(productsFilteredByCategory)
+        const productsFiltered = productsRaw.filter((product) =>
+            product.title.includes(keyword)
+        );
+        setProducts(productsFiltered);
+    }
+}, [productsFilteredByCategory, keyword]);
 
   return (
     <View style={styles.container}>
