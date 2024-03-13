@@ -8,7 +8,7 @@ const CartStack = () => {
   return (
     <Stack.Navigator
       initialRouteName="Cart"
-      screenOptions={{ header: () => <Header title="Cart" /> }}
+      screenOptions={{ header: () => <Header title="Carrito" /> }}
     >
       <Stack.Screen name="Cart" component={Cart} />
     </Stack.Navigator>

@@ -23,11 +23,6 @@ const Counter = () => {
           <Text style={styles.buttonText}>+</Text>
         </Pressable>
       </View>
-      <View style={styles.resetContainer}>
-        <Pressable onPress={()=> dispatch(reset())}>
-          <Text style={styles.resetText}>Reset</Text>
-        </Pressable>
-      </View>
     </View>
   );
 };
@@ -37,32 +32,29 @@ export default Counter;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "column",
-    justifyContent: "center",
     alignItems: "center",
-    width: "100%",
-    padding: 10,
+    paddingHorizontal: "20%",
+    marginBottom: "5%"
   },
   buttonsContainer: {
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
     width: "100%",
-    marginBottom: 10,
+    marginBottom: "2%",
   },
   button: {
-    padding: 10,
+    padding: "3%",
     backgroundColor: "gray",
   },
   span: {
-    width: "43%",
-    padding: 10,
     textAlign: "center",
     fontSize: 20,
     fontFamily: "MuktaRegular",
   },
   spanInput: {
     width: "43%",
-    padding: 10,
+    padding: "2%",
     textAlign: "center",
     fontSize: 16,
     fontFamily: "MuktaRegular",
@@ -71,19 +63,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: "MuktaRegular",
     color: "white",
-  },
-  resetText: {
-    fontSize: 18,
-    fontFamily: "MuktaRegular",
-    fontWeight: "bold",
-  },
-  resetContainer: {
-    backgroundColor: colors.champagne_pink,
-    height: 40,
-    width: 70,
-    alignItems: "center",
-    borderRadius: 15,
-    justifyContent: "center",
   },
   counter: {
     backgroundColor: "white",

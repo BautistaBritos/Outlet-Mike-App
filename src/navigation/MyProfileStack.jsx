@@ -9,7 +9,7 @@ const MyProfileStack = () => {
   return (
     <Stack.Navigator
       initialRouteName="My Profile"
-      screenOptions={{ header: () => <Header title="My Profile" /> }}
+      screenOptions={{ header: () => <Header title="Mi perfil" /> }}
     >
       <Stack.Screen name="My Profile" component={MyProfile} />
       <Stack.Screen name="Image Selector" component={ImageSelector} />

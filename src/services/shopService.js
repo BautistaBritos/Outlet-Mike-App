@@ -19,7 +19,7 @@ export const shopApi = createApi({
       query: () => "categories.json",
     }),
     postOrder: builder.mutation({
-      query: ({localId, ...order}) => ({
+      query: ({ localId, ...order }) => ({
         url: `orders/${localId}.json`,
         method: "POST",
         body: order,

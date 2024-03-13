@@ -1,7 +1,6 @@
 import { FlatList, StyleSheet, View, ImageBackground } from "react-native";
 import CategoryItem from "./CategoryItem";
 import fondo from "../../assets/fondo-app2.jpg";
-import Counter from "./Counter";
 import { useSelector } from "react-redux";
 import { useGetCategoriesQuery } from "../services/shopService";
 
@@ -13,7 +12,6 @@ function Categories({ navigation }) {
   return (
     <View>
       <ImageBackground source={fondo} style={styles.container} resizeMode="repeat">
-        <Counter />
         <FlatList
           data={data}
           renderItem={({ item }) => (

@@ -1,36 +1,48 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import React from "react";
-import { colors } from "../global/colors";
-import { useGetOrdersQuery } from "../services/shopService";
+import Card from "./Card";
+import { Feather } from "@expo/vector-icons";
 
-const OrderItem = ({ item }) => {
-  const total = item.items.reduce(
-    (acc, currentItem) => (acc += currentItem.quantity * currentItem.price),
-    0
-  );
+const OrderItem = ({ order, setOrderId, setModalVisible }) => {
+  let date = new Date(order.createdAt);
+  date = date.toLocaleString();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Numero de orden: {item.id}</Text>
-      <Text>Fecha: {new Date(item.createdAt).toLocaleString()}</Text>
-      <Text>Valor: ${total}</Text>
-    </View>
+    <Card style={styles.cartItemContainer}>
+      <View>
+        <Text style={styles.createdAt}>Fecha: {date}</Text>
+        <Text style={styles.total}>Total: ${order.total}</Text>
+      </View>
+      <TouchableOpacity
+        style={styles.searchIcon}
+        onPress={() => {
+          setOrderId(order.orderId);
+          setModalVisible(true);
+        }}
+      >
+        <Feather name="search" size={24} color="black" />
+      </TouchableOpacity>
+    </Card>
   );
 };
 
 export default OrderItem;
 
 const styles = StyleSheet.create({
-  text: {
-    color: "black",
-    fontSize: 15,
+  cartItemContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 20,
   },
-  container: {
-    marginVertical: "6%",
-    backgroundColor: colors.seashell,
-    borderRadius: 30,
-    height: 80,
-    justifyContent: "center",
-    paddingLeft: "10%",
-  }
+  searchIcon: {
+    marginLeft: "auto",
+  },
+  createdAt: {
+    fontFamily: "MuktaRegular",
+    marginBottom: 5,
+  },
+  total: {
+    fontFamily: "MuktaRegular",
+    fontSize: 14,
+  },
 });

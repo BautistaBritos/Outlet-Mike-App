@@ -2,19 +2,24 @@ import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import React, { useEffect, useState } from "react";
 import allProducts from "../data/products.json";
 import { colors } from "../global/colors";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../features/shop/cartSlice";
+import Counter from "../components/Counter";
+import { reset } from "../features/counter/counterSlice";
 
 const ItemDetail = ({ navigation, route }) => {
   const [product, setProduct] = useState(null);
 
   const { id } = route.params;
 
-  const dispatch = useDispatch()
+  const count = useSelector((state) => state.counterReducer.value);
+
+  const dispatch = useDispatch();
 
   const onAddCart = () => {
-    dispatch(addItem({...product, quantity: 1}))
-  }
+    dispatch(addItem({ ...product, quantity: count }));
+    dispatch(reset());
+  };
 
   useEffect(() => {
     const productFinded = allProducts.find((product) => product.id === id);
@@ -35,9 +40,12 @@ const ItemDetail = ({ navigation, route }) => {
             <Text style={styles.descriptionText}>{product.description}</Text>
             <Text style={styles.descriptionText}>Stock: {product.stock}</Text>
             <Text style={styles.descriptionTextPrice}>${product.price}</Text>
-            <Pressable style={styles.buy} onPress={onAddCart}>
-              <Text style={styles.buyText}>Comprar</Text>
-            </Pressable>
+            <Counter />
+            <View style={styles.buyContainer}>
+              <Pressable style={styles.buy} onPress={onAddCart}>
+                <Text style={styles.buyText}>Comprar</Text>
+              </Pressable>
+            </View>
           </View>
         </View>
       ) : (
@@ -64,36 +72,36 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: "45%",
-    marginVertical: 15,
+    height: "35%",
   },
   textContainer: {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "flex-start",
-    padding: 6,
   },
   descriptionText: {
     fontFamily: "MuktaRegular",
     fontSize: 21,
     color: "black",
-    paddingVertical: 4,
+    paddingVertical: "1%",
   },
   descriptionTextPrice: {
     fontFamily: "MuktaRegular",
     fontSize: 25,
     color: "black",
-    paddingVertical: 6,
+    paddingVertical: "1%",
   },
   buy: {
-    padding: 10,
+    padding: "2%",
     borderRadius: 6,
     backgroundColor: colors.redwood,
-    marginLeft: "33%"
   },
   buyText: {
     fontFamily: "MuktaBold",
     fontSize: 22,
     color: "white",
   },
+  buyContainer: {
+    alignSelf: "center"
+  }
 });
