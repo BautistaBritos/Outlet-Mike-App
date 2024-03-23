@@ -1,4 +1,4 @@
-# UOTLET MIKE APP
+# OUTLET MIKE APP
 
 ## Tu outlet favorito. La mejor calidad, los mejores precios.
 
