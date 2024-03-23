@@ -1,9 +1,18 @@
-import { FlatList, Modal, Pressable, StyleSheet, Text, View } from "react-native";
-import orders from "../data/orders.json";
+import {
+  FlatList,
+  Modal,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  ActivityIndicator,
+} from "react-native";
 import OrderItem from "../components/OrderItem";
 import { useGetOrdersQuery } from "../services/shopService";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { colors } from "../global/colors";
 
 const Orders = () => {
   const { localId } = useSelector((state) => state.authReducer.value);
@@ -11,7 +20,7 @@ const Orders = () => {
   const [orderData, setOrderData] = useState([]);
   const [orderIdSelected, setOrderIdSelected] = useState("");
   const [orderSelected, setOrderSelected] = useState({});
-  const [modalVisible, setModalVisible] = useState(false)
+  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -28,26 +37,51 @@ const Orders = () => {
   }, [orderIdSelected]);
 
   const renderOrderItem = ({ item }) => {
-    return <OrderItem order={item} setOrderId={setOrderIdSelected} setModalVisible={setModalVisible}/>;
+    return (
+      <OrderItem
+        order={item}
+        setOrderId={setOrderIdSelected}
+        setModalVisible={setModalVisible}
+      />
+    );
   };
 
   return (
     <>
-    <Text style={styles.titleOrders}>Tus ordenes de compra</Text>
-      <FlatList data={orderData} renderItem={renderOrderItem}/>
-      <Modal visible={modalVisible}>
-        <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>Total: ${orderSelected?.total}</Text>
-              <Text style={styles.modalText}>Numero de orden: {orderIdSelected}</Text>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(false)}>
-                <Text style={styles.textStyle}>Cerrar</Text>
-              </Pressable>
-            </View>
-          </View>
-      </Modal>
+      {isLoading ? (
+        <ActivityIndicator size="small" color="#0000ff" />
+      ) : (
+        <>
+          <Text style={styles.titleOrders}>Tus ordenes de compra</Text>
+          <FlatList data={orderData} renderItem={renderOrderItem} />
+          <Modal visible={modalVisible}>
+            <ImageBackground
+              source={{
+                uri: "https://i.pinimg.com/170x/20/49/be/2049bef9a5ebc93e128350b545c51c8a.jpg",
+              }}
+              style={styles.container}
+              resizeMode="cover"
+            >
+              <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                  <Text style={styles.modalText}>
+                    Numero de orden: {orderIdSelected}
+                  </Text>
+                  <Text style={styles.modalText}>
+                    Total: ${orderSelected?.total}
+                  </Text>
+                  <Pressable
+                    style={[styles.button, styles.buttonClose]}
+                    onPress={() => setModalVisible(false)}
+                  >
+                    <Text style={styles.textStyle}>Cerrar</Text>
+                  </Pressable>
+                </View>
+              </View>
+            </ImageBackground>
+          </Modal>
+        </>
+      )}
     </>
   );
 };
@@ -59,13 +93,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
+    marginTop: "8%",
   },
   modalView: {
-    margin: 20,
+    margin: "7%",
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
+    padding: "9%",
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -75,17 +109,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+    borderWidth: 2,
   },
   button: {
     borderRadius: 20,
-    padding: 10,
+    padding: "4%",
     elevation: 2,
   },
   buttonOpen: {
     backgroundColor: "#F194FF",
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: colors.burnt_sienna,
   },
   textStyle: {
     color: "white",
@@ -93,13 +128,21 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   modalText: {
-    marginBottom: 15,
+    marginBottom: "6%",
     textAlign: "center",
+    fontFamily: "MuktaBold",
+    fontSize: 16,
   },
   titleOrders: {
     paddingVertical: "7%",
     fontSize: 18,
     fontFamily: "MuktaBold",
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
+  container: {
+    flex: 1,
+    backgroundColor: colors.seashell,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });

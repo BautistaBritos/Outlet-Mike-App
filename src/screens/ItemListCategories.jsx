@@ -28,7 +28,7 @@ function ItemListCategories({ navigation, }) {
 
   return (
     <View style={styles.container}>
-      <Search onSearch={setKeyword} />
+      <Search onSearch={setKeyword}/>
       <FlatList
         data={products}
         renderItem={({ item }) => <ProductItem product={item} navigation={navigation}/>}

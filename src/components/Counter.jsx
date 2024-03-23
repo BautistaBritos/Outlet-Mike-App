@@ -2,7 +2,6 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import {
   increment,
   decrement,
-  reset,
 } from "../features/counter/counterSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { colors } from "../global/colors";
@@ -14,13 +13,14 @@ const Counter = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.units}>Unidades: </Text>
       <View style={styles.buttonsContainer}>
-        <Pressable  onPress={()=> dispatch(decrement())} style={styles.button}>
+        <Pressable  onPress={()=> dispatch(decrement())} style={styles.button1}>
           <Text style={styles.buttonText}>-</Text>
         </Pressable>
         <Text style={styles.counter}>{count}</Text>
         <Pressable onPress={()=> dispatch(increment())} style={styles.button}>
-          <Text style={styles.buttonText}>+</Text>
+          <Text style={styles.buttonText2}>+</Text>
         </Pressable>
       </View>
     </View>
@@ -31,10 +31,10 @@ export default Counter;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "column",
     alignItems: "center",
-    paddingHorizontal: "20%",
-    marginBottom: "5%"
+    marginBottom: "5%",
+    marginHorizontal: "25%",
+    justifyContent: "center",
   },
   buttonsContainer: {
     flexDirection: "row",
@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: "3%",
-    backgroundColor: "gray",
+    color: "black",
+    paddingVertical: 1
   },
   span: {
     textAlign: "center",
@@ -60,12 +61,31 @@ const styles = StyleSheet.create({
     fontFamily: "MuktaRegular",
   },
   buttonText: {
-    fontSize: 18,
-    fontFamily: "MuktaRegular",
-    color: "white",
+    fontSize: 32,
+    fontFamily: "MuktaBold",
+    color: "black",
+    textAlign: "center",
   },
   counter: {
     backgroundColor: "white",
     fontWeight: "bold",
+  },
+  buttonText2: {
+    fontSize: 30,
+    fontFamily: "MuktaRegular",
+    color: "black"
+  },
+  button1: {
+    padding: "3%",
+    color: "black",
+    paddingVertical: 1,
+    height: 55,
+    width: 35
+  },
+  units: {
+    fontFamily: "MuktaBold",
+    fontSize: 18,
+    color: colors.redwood,
+    textDecorationLine: "underline"
   }
 });

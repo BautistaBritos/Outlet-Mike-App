@@ -14,19 +14,27 @@ import { useLoginMutation } from "../services/authService";
 import { colors } from "../global/colors";
 import { useDispatch } from "react-redux";
 import { setUser } from "../features/auth/authSlice";
+import { insertSession } from "../db/";
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [errorMail, setErrorMail] = useState("");
   const [password, setPassword] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
-  const [triggerSignin, result] = useLoginMutation();
+  const [triggerLogin, result] = useLoginMutation();
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (result.data) {
       dispatch(setUser(result.data));
+      insertSession({
+        email: result.data.email,
+        localId: result.data.localId,
+        token: result.data.idToken,
+      })
+        .then((result) => console.log(result))
+        .catch((err) => console.log(err.message));
     }
   }, [result]);
 
@@ -35,7 +43,7 @@ const Login = ({ navigation }) => {
       setErrorMail("");
       setErrorPassword("");
       loginSchema.validateSync({ password, email });
-      triggerSignin({ email, password });
+      triggerLogin({ email, password });
     } catch (err) {
       switch (err.path) {
         case "email":
@@ -61,13 +69,15 @@ const Login = ({ navigation }) => {
       <View>
         <Text style={styles.textRegister}>Outlet Mike</Text>
         <Text style={styles.textRegister2}>¡Los mejores precios para vos!</Text>
-        <InputForm label={"Email"} error={errorMail} onChange={setEmail} />
-        <InputForm
-          label={"Contraseña"}
-          error={errorPassword}
-          onChange={setPassword}
-          isSecure={true}
-        />
+        <View style={styles.backgroundInput}>
+          <InputForm label={"Email"} error={errorMail} onChange={setEmail} />
+          <InputForm
+            label={"Contraseña"}
+            error={errorPassword}
+            onChange={setPassword}
+            isSecure={true}
+          />
+        </View>
         {result.isLoading ? (
           <ActivityIndicator size="small" color="#0000ff" />
         ) : (
@@ -134,4 +144,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "blue",
   },
+  backgroundInput: {
+    backgroundColor: "white",
+    width: "80%",
+    marginHorizontal: "10%",
+    borderRadius: 15,
+    height: "35%",
+    justifyContent: "center",
+  }
 });

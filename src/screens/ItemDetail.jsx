@@ -40,8 +40,8 @@ const ItemDetail = ({ navigation, route }) => {
             <Text style={styles.descriptionText}>{product.description}</Text>
             <Text style={styles.descriptionText}>Stock: {product.stock}</Text>
             <Text style={styles.descriptionTextPrice}>${product.price}</Text>
-            <Counter />
-            <View style={styles.buyContainer}>
+            <View>
+              <Counter />
               <Pressable style={styles.buy} onPress={onAddCart}>
                 <Text style={styles.buyText}>Comprar</Text>
               </Pressable>
@@ -95,13 +95,12 @@ const styles = StyleSheet.create({
     padding: "2%",
     borderRadius: 6,
     backgroundColor: colors.redwood,
+    marginLeft: "4%"
   },
   buyText: {
     fontFamily: "MuktaBold",
     fontSize: 22,
     color: "white",
+    textAlign: "center"
   },
-  buyContainer: {
-    alignSelf: "center"
-  }
 });

@@ -11,7 +11,7 @@ const Search = ({ onSearch }) => {
     if (input) {
       onSearch(input);
     }
-  };
+  }
 
   const removeInput = () => {
     setInput("");

@@ -2,6 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import React from "react";
 import Card from "./Card";
 import { Feather } from "@expo/vector-icons";
+import { colors } from "../global/colors";
 
 const OrderItem = ({ order, setOrderId, setModalVisible }) => {
   let date = new Date(order.createdAt);
@@ -32,7 +33,10 @@ const styles = StyleSheet.create({
   cartItemContainer: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 20,
+    margin: "5%",
+    marginHorizontal: "7%",
+    borderColor: colors.redwood,
+    padding: "5%"
   },
   searchIcon: {
     marginLeft: "auto",
@@ -40,9 +44,10 @@ const styles = StyleSheet.create({
   createdAt: {
     fontFamily: "MuktaRegular",
     marginBottom: 5,
+    fontSize: 15
   },
   total: {
-    fontFamily: "MuktaRegular",
-    fontSize: 14,
+    fontFamily: "MuktaBold",
+    fontSize: 16,
   },
 });

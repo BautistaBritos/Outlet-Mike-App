@@ -14,7 +14,7 @@ import { setUser } from "../features/auth/authSlice";
 import { signupSchema } from "../validations/signupSchema";
 import { colors } from "../global/colors";
 
-const Signup = ({navigation}) => {
+const Signup = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [errorMail, setErrorMail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,12 +26,7 @@ const Signup = ({navigation}) => {
   const dispatch = useDispatch();
 
   const onSubmit = () => {
-    console.log("mail", errorMail);
-    console.log("password", errorPassword);
-    console.log("confirmPassword", errorConfirmPassword);
-
     try {
-      //limpiamos los errores cada vez que ejecutamos el Register
       setErrorMail("");
       setErrorPassword("");
       setErrorConfirmPassword("");
@@ -39,7 +34,6 @@ const Signup = ({navigation}) => {
       signupSchema.validateSync({ password, confirmPassword, email });
       triggerSignup({ email, password });
     } catch (err) {
-      console.log("path", err.path);
       switch (err.path) {
         case "email":
           setErrorMail(err.message);
@@ -58,7 +52,7 @@ const Signup = ({navigation}) => {
 
   useEffect(() => {
     if (result.data) {
-      dispatch(setUser(result));
+      dispatch(setUser(result.data));
     }
   }, [result]);
 
@@ -72,25 +66,30 @@ const Signup = ({navigation}) => {
     >
       <View>
         <Text style={styles.textRegister}>Registro</Text>
-        <InputForm label={"Email"} error={errorMail} onChange={setEmail} />
-        <InputForm
-          label={"Contraseña"}
-          error={errorPassword}
-          onChange={setPassword}
-          isSecure={true}
-        />
-        <InputForm
-          label={"Confirmar contraseña"}
-          error={errorConfirmPassword}
-          onChange={setConfirmPassword}
-          isSecure={true}
-        />
+        <View style={styles.backgroundInput}>
+          <InputForm label={"Email"} error={errorMail} onChange={setEmail} />
+          <InputForm
+            label={"Contraseña"}
+            error={errorPassword}
+            onChange={setPassword}
+            isSecure={true}
+          />
+          <InputForm
+            label={"Confirmar contraseña"}
+            error={errorConfirmPassword}
+            onChange={setConfirmPassword}
+            isSecure={true}
+          />
+        </View>
         <View style={styles.buttonContainer}>
           <SubmitButton title={"Registro"} onPress={onSubmit} />
         </View>
         <View style={styles.login}>
           <Text style={styles.textLogin}>¿Ya te registraste?</Text>
-          <Pressable style={styles.buttonLogin} onPress={()=> navigation.navigate("Login")}>
+          <Pressable
+            style={styles.buttonLogin}
+            onPress={() => navigation.navigate("Login")}
+          >
             <Text style={styles.textLogin2}>Logueate aqui!</Text>
           </Pressable>
         </View>
@@ -112,7 +111,7 @@ const styles = StyleSheet.create({
     marginTop: "5%",
     marginBottom: "8%",
     color: colors.redwood,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   buttonContainer: {
     flexDirection: "row",
@@ -121,7 +120,7 @@ const styles = StyleSheet.create({
   },
   textLogin: {
     fontSize: 16,
-    marginRight: "2%"
+    marginRight: "2%",
   },
   textLogin2: {
     fontSize: 16,
@@ -131,5 +130,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     marginVertical: "5%",
-  }
+  },
+  backgroundInput: {
+    backgroundColor: "white",
+    width: "80%",
+    marginHorizontal: "10%",
+    borderRadius: 15,
+    height: "50%",
+    justifyContent: "center",
+  },
 });

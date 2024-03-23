@@ -7,5 +7,5 @@ export const signupSchema = object().shape({
     .min(6, "La contraseña debe tener al menos 6 caracteres"),
   confirmPassword: string()
     .oneOf([ref("password"), null], "Las contraseñas no son iguales")
-    .required(),
+    .required("Es necesario confirmar la contraseña"),
 });
